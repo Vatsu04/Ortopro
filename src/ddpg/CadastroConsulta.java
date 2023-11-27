@@ -102,7 +102,7 @@ public class CadastroConsulta extends javax.swing.JFrame {
                   
                   if (!clienteExiste ) {
             JOptionPane.showMessageDialog(null, "ID do paciente inválido");
-            new CadastroProntuario().setVisible(true);
+            new CadastroConsulta().setVisible(true);
             this.dispose();
             return;
         }

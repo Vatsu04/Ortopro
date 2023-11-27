@@ -169,4 +169,6 @@ public class ConsultasDAO {
             throw new RuntimeException(e);
         }
     }
+        
+       
 }

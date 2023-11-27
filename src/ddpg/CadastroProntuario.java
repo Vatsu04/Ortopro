@@ -93,13 +93,15 @@ public class CadastroProntuario extends javax.swing.JFrame {
 
         int idPaciente = Integer.parseInt(idPacienteText);
         int idConsulta = Integer.parseInt(idConsultaText);
-
+            
+        
         ProntuarioDAO dao = new ProntuarioDAO();
 
         boolean clienteExiste = dao.verificarPacienteExistente(idPaciente);
         boolean consultaExiste = dao.verificarConsultaExistente(idConsulta);
+        boolean clienteConsulta = dao.verificarPacienteConsulta(idConsulta, idPaciente);
 
-        if (!clienteExiste || !consultaExiste) {
+        if (!clienteExiste || !consultaExiste || !clienteConsulta) {
             JOptionPane.showMessageDialog(null, "ID do cliente/consulta inválido");
             new CadastroProntuario().setVisible(true);
             this.dispose();

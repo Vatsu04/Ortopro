@@ -199,4 +199,24 @@ public class ProntuarioDAO {
             throw new RuntimeException(e);
         }
     }
+        
+    public boolean verificarPacienteConsulta(int idConsulta, int idPaciente){
+        String sql = "SELECT Id_Consulta and Id_Paciente from consultas WHERE Id_Consulta = ?  AND Id_Paciente = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, idConsulta);
+            stmt.setInt(2, idPaciente);
+            ResultSet rs = stmt.executeQuery();
+            
+            boolean pacienteConsulta = rs.next();
+            
+            rs.close();
+            stmt.close();
+            
+            return pacienteConsulta;
+            
+        } catch( SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

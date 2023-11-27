@@ -10,30 +10,21 @@ package ddpg;
  */
 public class Paciente {
 
-    /**
-     * @return the Id_Paciente
-     */
+    
     public int getId_Paciente() {
         return Id_Paciente;
     }
 
-    /**
-     * @param Id_Paciente the Id_Paciente to set
-     */
+    
     public void setId_Paciente(int Id_Paciente) {
         this.Id_Paciente = Id_Paciente;
     }
 
-    /**
-     * @return the Nome_Completo
-     */
+  
     public String getNome_Completo() {
         return Nome_Completo;
     }
 
-    /**
-     * @param Nome_Completo the Nome_Completo to set
-     */
     public void setNome_Completo(String Nome_Completo) {
         this.Nome_Completo = Nome_Completo;
     }
@@ -45,65 +36,45 @@ public class Paciente {
         return CPF;
     }
 
-    /**
-     * @param CPF the CPF to set
-     */
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 
-    /**
-     * @return the Email
-     */
+    
     public String getEmail() {
         return Email;
     }
 
-    /**
-     * @param Email the Email to set
-     */
+    
     public void setEmail(String Email) {
         this.Email = Email;
     }
 
-    /**
-     * @return the Telefone
-     */
+    
     public String getTelefone() {
         return Telefone;
     }
 
-    /**
-     * @param Telefone the Telefone to set
-     */
+    
     public void setTelefone(String Telefone) {
         this.Telefone = Telefone;
     }
 
-    /**
-     * @return the Cidade
-     */
+    
     public String getCidade() {
         return Cidade;
     }
-
-    /**
-     * @param Cidade the Cidade to set
-     */
     public void setCidade(String Cidade) {
         this.Cidade = Cidade;
     }
 
-    /**
-     * @return the Naturalidade
-     */
+   
+    
     public String getNaturalidade() {
         return Naturalidade;
     }
 
-    /**
-     * @param Naturalidade the Naturalidade to set
-     */
+   
     public void setNaturalidade(String Naturalidade) {
         this.Naturalidade = Naturalidade;
     }
