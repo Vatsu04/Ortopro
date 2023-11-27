@@ -102,9 +102,12 @@ public static String pacienteSelecionado;
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Prototipos/9.png"))); // NOI18N
         jLabel2.setText("jLabel1");
+        jLabel2.setToolTipText("");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
