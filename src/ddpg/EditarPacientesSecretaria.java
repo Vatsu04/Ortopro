@@ -145,6 +145,11 @@ public class EditarPacientesSecretaria extends javax.swing.JFrame {
 
         CriarFicha.setContentAreaFilled(false);
         CriarFicha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CriarFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CriarFichaActionPerformed(evt);
+            }
+        });
         getContentPane().add(CriarFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 130, 50));
 
         Carregar.setContentAreaFilled(false);
@@ -271,6 +276,11 @@ public class EditarPacientesSecretaria extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_SairActionPerformed
+
+    private void CriarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarFichaActionPerformed
+        new CadastroPaciente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CriarFichaActionPerformed
 
     /**
      * @param args the command line arguments

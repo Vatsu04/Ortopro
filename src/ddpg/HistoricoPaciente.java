@@ -153,6 +153,7 @@ public static String pacienteSelecionado;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HistoricoPaciente().setVisible(true);
+                this.dispose();
             }
         });
     }
@@ -201,10 +202,11 @@ private void listarProntuario() { //Declaração do método listarValores(). Ess
             for (int num = 0; num < lista.size(); num++) {
                 model.addRow(new Object[]{
                     lista.get(num).getId_Prontuario(),
-                     lista.get(num).getId_Prontuario(),
+                     lista.get(num).getId_Consulta(),
                    lista.get(num).getDiagnostico(),
+                   lista.get(num).getRemedios_Prescritos(),
                     lista.get(num).getRetorno(),
-                    lista.get(num).getRemedios_Prescritos()
+                    lista.get(num).getId_Paciente()
                   
                 });
 

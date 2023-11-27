@@ -142,12 +142,12 @@ public class ProntuarioDAO {
             while (rs.next()) {
                 Prontuario objProntuario = new Prontuario();
                 objProntuario.setId_Prontuario(rs.getInt("Id_Prontuario"));  // Obtém o ID do usuário do resultado da consulta
-               
+                objProntuario.setId_Paciente(rs.getInt("Id_Paciente"));
            
                  objProntuario.setDiagnostico(rs.getString("Diagnostico"));
                 objProntuario.setRetorno (rs.getString("Retorno")); // Obtém o telefone do usuár
-                objProntuario.setRetorno (rs.getString("Remedios_Prescritos")); 
-                objProntuario.setRetorno(rs.getString("Id_Consulta"));
+                objProntuario.setRemedios_Prescritos (rs.getString("Remedios_Prescritos")); 
+                objProntuario.setId_Consulta(rs.getInt("Id_Consulta"));
                
               
 
