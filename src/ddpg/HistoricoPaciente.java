@@ -118,6 +118,7 @@ public static String pacienteSelecionado;
         }
         else if (Login.role.equals("SECRETARIA")) {
             new EditarPacientesSecretaria().setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Função inválida, destruindo a sessão...");
             this.dispose();
@@ -153,7 +154,7 @@ public static String pacienteSelecionado;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HistoricoPaciente().setVisible(true);
-                this.dispose();
+                
             }
         });
     }
