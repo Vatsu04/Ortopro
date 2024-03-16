@@ -60,7 +60,7 @@ boolean login = false;
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-          String us = Nome.getText();
+        String us = Nome.getText();
         String ps = Senha.getText();
 
         try {

@@ -195,8 +195,10 @@ private String formatTelefone(String telefone) {
                 
             }  else if (CPF.getText().length() > 15){
         JOptionPane.showMessageDialog(null, "CPF inválido");
+        CPF.setText("");
     } else if(Telefone.getText().length() >14){
         JOptionPane.showMessageDialog(null, "Telefone inválido");
+        Telefone.setText("");
     }
             
             else {
@@ -204,44 +206,40 @@ private String formatTelefone(String telefone) {
             
             
             PacienteDAO dao = new PacienteDAO();
-             dao.adiciona(pacientes);
+            dao.adiciona(pacientes);
             JOptionPane.showMessageDialog(null, " Paciente "+Nome.getText()+" Inserido(a) com sucesso! ");
-            
+            emptyAll();
          
             
           
 
            
                    }
-    
              
-             /*
-             pacientes.setNome_Completo(Nome.getText());
-           pacientes.setData_Nascimento(DDN.getText());
-           pacientes.setEmail(Email.getText());
-           pacientes.setTelefone(Telefone.getText());
-           pacientes.setAlergias(Alergias.getText());
-           pacientes.setCPF(CPF.getText());
-           pacientes.setCidade(Cidade.getText());
-           pacientes.setHistorico_Cirurgico(HC.getText());
-           pacientes.setHistorico_Medico(HM.getText());
-             */
-    Nome.setText("");
-    DDN.setText("");
-    Email.setText("");
-    Alergias.setText("");
-    HC.setText("");
-    HM.setText("");
-    CPF.setText("");
-    Telefone.setText("");
-    Cidade.setText("");
+    
   
     
     
     }//GEN-LAST:event_FînalizarActionPerformed
 
+    
+    private void emptyAll(){
+        Nome.setText("");
+        DDN.setText("");
+        Email.setText("");
+        Alergias.setText("");
+        HC.setText("");
+        HM.setText("");
+        Telefone.setText("");
+        CPF.setText("");
+    }
+    
+    
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
+    
+    
+    Cidade.setText("");
          if (Login.role.equals("ORTOPEDISTA")) {
             new EditarPacientes().setVisible(true);
             this.dispose();

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ddpg;
 import javax.swing.JOptionPane;
 /**
@@ -106,6 +103,12 @@ public class CadastroProntuario extends javax.swing.JFrame {
             new CadastroProntuario().setVisible(true);
             this.dispose();
             return;
+            
+            /*
+            new CadastroProntuario().setVisible(true);
+            this.dispose();
+            return;
+            */
         }
 
         prontuarios.setId_Paciente(idPaciente);
@@ -121,12 +124,19 @@ public class CadastroProntuario extends javax.swing.JFrame {
     Diagnostico.setText("");
     Id_Consulta.setText("");
 
+  
 
     }//GEN-LAST:event_FinalizarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
+    
+    private void emptyAll(){
+        
+    }
+    
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

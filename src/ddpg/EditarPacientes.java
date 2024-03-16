@@ -412,7 +412,7 @@ Define os valores obtidos nos campos de texto Id, User, Telefone e Email.
         CPF.setText(TabelaPaciente.getModel().getValueAt(setar, 2).toString());
         Telefone.setText(TabelaPaciente.getModel().getValueAt(setar, 3).toString());
         Cidade.setText(TabelaPaciente.getModel().getValueAt(setar, 4).toString());
-     Data.setText(TabelaPaciente.getModel().getValueAt(setar, 5).toString());
+        Data.setText(TabelaPaciente.getModel().getValueAt(setar, 5).toString());
         Email.setText(TabelaPaciente.getModel().getValueAt(setar, 6).toString());
         HM.setText(TabelaPaciente.getModel().getValueAt(setar, 7).toString());
         HC.setText(TabelaPaciente.getModel().getValueAt(setar, 8).toString());
@@ -481,7 +481,7 @@ Chama o método AlterarPacientes() da classe PacientesDAO, passando o objeto obj
         Paciente objPacientes = new Paciente();
         objPacientes.setId_Paciente(id_paciente);
        
-         objPacientes.setCPF(cpf);
+        objPacientes.setCPF(cpf);
         objPacientes.setAlergias(alergias);
         objPacientes.setHistorico_Medico(historico_medico);
         objPacientes.setHistorico_Cirurgico(historico_cirurgico);
