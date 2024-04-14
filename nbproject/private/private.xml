@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/ConnectionProject.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/CadastroProntuario.java</file>
+            <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/Consultas.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/EditarPacientesSecretaria.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/EditarPacientes.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/Login.java</file>
@@ -14,6 +15,7 @@
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/HistoricoPaciente.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/EditarProntuario.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/Prontuario.java</file>
+            <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/ConsultasDAO.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/CadastroConsulta.java</file>
             <file>file:/C:/Users/tasca/Documents/NetBeansProjects/ddpg/src/ddpg/EditarConsultas.java</file>
         </group>
