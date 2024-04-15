@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ddpg;
 
 import com.mysql.jdbc.Connection;
@@ -9,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
 /**
  *
  * @author tasca
@@ -20,6 +18,14 @@ public static String role = "NULL";
      */
     public Login() {
         initComponents();
+        // Add a KeyListener to the password field
+        Senha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    LoginActionPerformed(null); // Call the login action when Enter is pressed
+                }
+            }
+        });
     }
 boolean login = false;
     /**

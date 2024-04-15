@@ -1,25 +1,18 @@
-
 package ddpg;
 
 import javax.swing.JOptionPane;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/**
- *
- * @author tasca
- */
 public class CadastroPaciente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CadastroConsulta
-     */
     public CadastroPaciente() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -96,134 +89,134 @@ public class CadastroPaciente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 private String formatCPF(String cpf) {
-    // Remove non-numeric characters from the input
-    String numericCPF = cpf.replaceAll("[^0-9]", "");
+        // Remove non-numeric characters from the input
+        String numericCPF = cpf.replaceAll("[^0-9]", "");
 
-    
-    if (numericCPF.length() == 11) {
-        // Format CPF with a mask
-        return String.format("%s.%s.%s-%s",
-                numericCPF.substring(0, 3),
-                numericCPF.substring(3, 6),
-                numericCPF.substring(6, 9),
-                numericCPF.substring(9));
-    } else {
-        // If the CPF is not valid, return the original input
-        return cpf;
+        if (numericCPF.length() == 11) {
+            // Format CPF with a mask
+            return String.format("%s.%s.%s-%s",
+                    numericCPF.substring(0, 3),
+                    numericCPF.substring(3, 6),
+                    numericCPF.substring(6, 9),
+                    numericCPF.substring(9));
+        } else {
+            // If the CPF is not valid, return the original input
+            return cpf;
+        }
     }
-}
 
-private String formatDataNascimento(String dataNascimento) {
-    // Remove non-numeric characters from the input
-    String numericDataNascimento = dataNascimento.replaceAll("[^0-9]", "");
+    private boolean isValidEmail(String email) {
+        // Regular expression pattern for validating email addresses
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-    // Check if the dataNascimento is already formatted
-    if (numericDataNascimento.length() == 8) {
-        // Format dataNascimento with a mask
-        try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyyMMdd");
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = inputFormat.parse(numericDataNascimento);
-            return outputFormat.format(date);
-        } catch (ParseException e) {
-            // If there is an error parsing the date, return the original input
+        // Compile the pattern into a regular expression object
+        Pattern pattern = Pattern.compile(emailRegex);
+
+        // Match the input email address against the pattern
+        Matcher matcher = pattern.matcher(email);
+
+        // Return true if the email matches the pattern, otherwise false
+        return matcher.matches();
+    }
+
+    private String formatDataNascimento(String dataNascimento) {
+        // Remove non-numeric characters from the input
+        String numericDataNascimento = dataNascimento.replaceAll("[^0-9]", "");
+
+        // Check if the dataNascimento is already formatted
+        if (numericDataNascimento.length() == 8) {
+            // Format dataNascimento with a mask
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyyMMdd");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = inputFormat.parse(numericDataNascimento);
+                return outputFormat.format(date);
+            } catch (ParseException e) {
+                // If there is an error parsing the date, return the original input
+                return dataNascimento;
+            }
+        } else {
+            // If the dataNascimento is not valid, return the original input
             return dataNascimento;
         }
-    } else {
-        // If the dataNascimento is not valid, return the original input
-        return dataNascimento;
     }
-}
-
 
 // Format telefone with a mask (e.g., "(##) #####-####")
-private String formatTelefone(String telefone) {
-    // Remove non-numeric characters from the input
-    String numericTelefone = telefone.replaceAll("[^0-9]", "");
+    private String formatTelefone(String telefone) {
+        // Remove non-numeric characters from the input
+        String numericTelefone = telefone.replaceAll("[^0-9]", "");
 
-    // Check if the telefone is already formatted
-    if (numericTelefone.length() == 11 || numericTelefone.length() == 10) {
-        // Format telefone with a mask
-        if (numericTelefone.length() == 11) {
-            return String.format("(%s) %s-%s",
-                    numericTelefone.substring(0, 2),
-                    numericTelefone.substring(2, 7),
-                    numericTelefone.substring(7));
+        // Check if the telefone is already formatted
+        if (numericTelefone.length() == 11 || numericTelefone.length() == 10) {
+            // Format telefone with a mask
+            if (numericTelefone.length() == 11) {
+                return String.format("(%s) %s-%s",
+                        numericTelefone.substring(0, 2),
+                        numericTelefone.substring(2, 7),
+                        numericTelefone.substring(7));
+            } else {
+                return String.format("(%s) %s-%s",
+                        numericTelefone.substring(0, 2),
+                        numericTelefone.substring(2, 6),
+                        numericTelefone.substring(6));
+            }
         } else {
-            return String.format("(%s) %s-%s",
-                    numericTelefone.substring(0, 2),
-                    numericTelefone.substring(2, 6),
-                    numericTelefone.substring(6));
+            // If the telefone is not valid, return the original input
+            return telefone;
         }
-    } else {
-        // If the telefone is not valid, return the original input
-        return telefone;
     }
-}
 
 
     private void FînalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FînalizarActionPerformed
         // TODO add your handling code here:
-          Paciente pacientes = new Paciente();
-            
-           pacientes.setNome_Completo(Nome.getText());
-           pacientes.setData_Nascimento(formatDataNascimento(DDN.getText()));
-           pacientes.setEmail(Email.getText());
-           pacientes.setTelefone(formatTelefone(Telefone.getText()));
-           pacientes.setAlergias(Alergias.getText());
-           pacientes.setCPF(formatCPF(CPF.getText()));
-           pacientes.setCidade(Cidade.getText());
-           pacientes.setHistorico_Cirurgico(HC.getText());
-           pacientes.setHistorico_Medico(HM.getText());
-           
-           
-            
-          
-            
-             if (
-                    (CPF.getText().isEmpty()) ||
-                    (Telefone.getText().isEmpty()) ||
-                    (Email.getText().isEmpty()) ||
-                    (DDN.getText().isEmpty()) ||
-                    (Alergias.getText().isEmpty()) ||
-                     (Cidade.getText().isEmpty()) ||
-                     (HM.getText().isEmpty()) ||
-                     (HC.getText().isEmpty()) ||
-                     
-                    (Nome.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-                
-            }  else if (CPF.getText().length() > 15){
-        JOptionPane.showMessageDialog(null, "CPF inválido");
-        CPF.setText("");
-    } else if(Telefone.getText().length() >14){
-        JOptionPane.showMessageDialog(null, "Telefone inválido");
-        Telefone.setText("");
-    }
-            
-            else {
-           
-            
-            
+        Paciente pacientes = new Paciente();
+
+        pacientes.setNome_Completo(Nome.getText());
+        pacientes.setData_Nascimento(formatDataNascimento(DDN.getText()));
+        pacientes.setEmail(Email.getText());
+        pacientes.setTelefone(formatTelefone(Telefone.getText()));
+        pacientes.setAlergias(Alergias.getText());
+        pacientes.setCPF(formatCPF(CPF.getText()));
+        pacientes.setCidade(Cidade.getText());
+        pacientes.setHistorico_Cirurgico(HC.getText());
+        pacientes.setHistorico_Medico(HM.getText());
+
+        
+        if (!isValidEmail(Email.getText())) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira um email válido.");
+            return;
+        }
+        
+        if ((CPF.getText().isEmpty())
+                || (Telefone.getText().isEmpty())
+                || (Email.getText().isEmpty())
+                || (DDN.getText().isEmpty())
+                || (Alergias.getText().isEmpty())
+                || (Cidade.getText().isEmpty())
+                || (HM.getText().isEmpty())
+                || (HC.getText().isEmpty())
+                || (Nome.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+
+        } else if (CPF.getText().length() > 15) {
+            JOptionPane.showMessageDialog(null, "CPF inválido");
+            CPF.setText("");
+        } else if (Telefone.getText().length() > 14) {
+            JOptionPane.showMessageDialog(null, "Telefone inválido");
+            Telefone.setText("");
+        } else {
+
             PacienteDAO dao = new PacienteDAO();
             dao.adiciona(pacientes);
-            JOptionPane.showMessageDialog(null, " Paciente "+Nome.getText()+" Inserido(a) com sucesso! ");
+            JOptionPane.showMessageDialog(null, " Paciente " + Nome.getText() + " Inserido(a) com sucesso! ");
             emptyAll();
-         
-            
-          
 
-           
-                   }
-             
-    
-  
-    
-    
+        }
+
+
     }//GEN-LAST:event_FînalizarActionPerformed
 
-    
-    private void emptyAll(){
+    private void emptyAll() {
         Nome.setText("");
         DDN.setText("");
         Email.setText("");
@@ -233,18 +226,16 @@ private String formatTelefone(String telefone) {
         Telefone.setText("");
         CPF.setText("");
     }
-    
-    
+
+
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
-    
-    
-    Cidade.setText("");
-         if (Login.role.equals("ORTOPEDISTA")) {
+
+        Cidade.setText("");
+        if (Login.role.equals("ORTOPEDISTA")) {
             new EditarPacientes().setVisible(true);
             this.dispose();
-        }
-        else if (Login.role.equals("SECRETARIA")) {
+        } else if (Login.role.equals("SECRETARIA")) {
             new EditarPacientesSecretaria().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Função inválida, destruindo a sessão...");
@@ -252,9 +243,6 @@ private String formatTelefone(String telefone) {
         }
     }//GEN-LAST:event_VoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -303,7 +291,5 @@ private String formatTelefone(String telefone) {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
-
-
 
 }

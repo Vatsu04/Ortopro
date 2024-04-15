@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ddpg;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author tasca
@@ -68,56 +70,49 @@ public class CadastroConsulta extends javax.swing.JFrame {
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
         new EditarConsultas().setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
         Consultas consultas = new Consultas();
-            consultas.setHorario(Horario.getText());
-         
-        
-            consultas.setData_Consulta(Data.getText());
-            
-            
-            String idPacienteText = Id_Paciente.getText();
-          
-            if (
-                    (Id_Paciente.getText().isEmpty()) ||
-                  
-                (Data.getText().isEmpty()) ||
-              
-                    (Horario.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-                
+        consultas.setHorario(Horario.getText());
+
+        consultas.setData_Consulta(Data.getText());
+
+        String idPacienteText = Id_Paciente.getText();
+
+        if ((Id_Paciente.getText().isEmpty())
+                || (Data.getText().isEmpty())
+                || (Horario.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+
+        } else {
+            int idPaciente = Integer.parseInt(idPacienteText);
+
+            ConsultasDAO dao = new ConsultasDAO();
+
+            boolean clienteExiste = dao.verificarPacienteExistente(idPaciente);
+
+            if (!clienteExiste) {
+                JOptionPane.showMessageDialog(null, "ID do paciente inválido");
+                new CadastroConsulta().setVisible(true);
+                this.dispose();
+                return;
             }
-            else{
-                 int idPaciente = Integer.parseInt(idPacienteText);
-                 
-                   ConsultasDAO dao = new ConsultasDAO();
-                 
-                  boolean clienteExiste = dao.verificarPacienteExistente(idPaciente);
-                 
-                  
-                  if (!clienteExiste ) {
-            JOptionPane.showMessageDialog(null, "ID do paciente inválido");
-            new CadastroConsulta().setVisible(true);
-            this.dispose();
-            return;
-        }
-                  
+
             consultas.setId_Paciente(idPaciente);
-           
+
             dao.adiciona(consultas);
             JOptionPane.showMessageDialog(null, "Consulta marcada com sucesso! ");
-    }
-    
-    Id_Paciente.setText("");
-    
-    Horario.setText("");
-    
-    Data.setText("");
+        }
+
+        Id_Paciente.setText("");
+
+        Horario.setText("");
+
+        Data.setText("");
     }//GEN-LAST:event_FinalizarActionPerformed
 
     /**
@@ -212,5 +207,5 @@ public class CadastroConsulta extends javax.swing.JFrame {
     Data.setText("");
     
     
-*/
+     */
 }

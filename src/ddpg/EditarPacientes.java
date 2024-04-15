@@ -7,7 +7,8 @@ package ddpg;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author 62127512022.3
@@ -382,8 +383,8 @@ private void listarValores() { //Declaração do método listarValores(). Esse m
                      lista.get(num).getNome_Completo(),
                    lista.get(num).getCPF(),
                     lista.get(num).getTelefone(),
-                    lista.get(num).getCidade(),
-                     lista.get(num).getData_Nascimento(),     
+              lista.get(num).getCidade(),
+              lista.get(num).getData_Nascimento(),     
               lista.get(num).getEmail(),
               lista.get(num).getHistorico_Medico(),
               lista.get(num).getHistorico_Cirurgico(),
@@ -395,6 +396,20 @@ private void listarValores() { //Declaração do método listarValores(). Esse m
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Listar Valores :" + erro);
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        // Regular expression pattern for validating email addresses
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        
+        // Compile the pattern into a regular expression object
+        Pattern pattern = Pattern.compile(emailRegex);
+
+        // Match the input email address against the pattern
+        Matcher matcher = pattern.matcher(email);
+
+        // Return true if the email matches the pattern, otherwise false
+        return matcher.matches();
     }
 
   private void CarregarCampos() {
@@ -463,9 +478,13 @@ Chama o método AlterarPacientes() da classe PacientesDAO, passando o objeto obj
 
         id_paciente = Integer.parseInt(ID.getText());
       
-          cpf = CPF.getText();
+        cpf = CPF.getText();
        
       
+        if (!isValidEmail(Email.getText())) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira um email válido.");
+            return;
+        }
         
         email = Email.getText();
         nome = Nome.getText();
@@ -491,6 +510,8 @@ Chama o método AlterarPacientes() da classe PacientesDAO, passando o objeto obj
         objPacientes.setEmail(email);
         objPacientes.setNome_Completo(nome);
 
+        
+        
         PacienteDAO objPacientesDAO = new PacienteDAO();
         objPacientesDAO.AlterarPaciente(objPacientes);
 

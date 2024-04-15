@@ -1,6 +1,7 @@
-
 package ddpg;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author tasca
@@ -69,74 +70,67 @@ public class CadastroProntuario extends javax.swing.JFrame {
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
         new EditarProntuario().setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
 
-    // TODO add your handling code here:
-    Prontuario prontuarios = new Prontuario();
-    String idPacienteText = Id_Paciente.getText();
-    prontuarios.setDiagnostico(Diagnostico.getText());
-    prontuarios.setRetorno(Retorno.getText());
-    prontuarios.setRemedios_Prescritos(Remedios.getText());
-    String idConsultaText = Id_Consulta.getText();
+        // TODO add your handling code here:
+        Prontuario prontuarios = new Prontuario();
+        String idPacienteText = Id_Paciente.getText();
+        prontuarios.setDiagnostico(Diagnostico.getText());
+        prontuarios.setRetorno(Retorno.getText());
+        prontuarios.setRemedios_Prescritos(Remedios.getText());
+        String idConsultaText = Id_Consulta.getText();
 
-    if (Id_Paciente.getText().isEmpty() || Id_Consulta.getText().isEmpty() || Diagnostico.getText().isEmpty()
-            || Retorno.getText().isEmpty() || Remedios.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-    } else {
+        if (Id_Paciente.getText().isEmpty() || Id_Consulta.getText().isEmpty() || Diagnostico.getText().isEmpty()
+                || Retorno.getText().isEmpty() || Remedios.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+        } else {
 
-        int idPaciente = Integer.parseInt(idPacienteText);
-        int idConsulta = Integer.parseInt(idConsultaText);
-            
-        
-        ProntuarioDAO dao = new ProntuarioDAO();
+            int idPaciente = Integer.parseInt(idPacienteText);
+            int idConsulta = Integer.parseInt(idConsultaText);
 
-        boolean clienteExiste = dao.verificarPacienteExistente(idPaciente);
-        boolean consultaExiste = dao.verificarConsultaExistente(idConsulta);
-        boolean clienteConsulta = dao.verificarPacienteConsulta(idConsulta, idPaciente);
+            ProntuarioDAO dao = new ProntuarioDAO();
 
-        if (!clienteExiste || !consultaExiste || !clienteConsulta) {
-            JOptionPane.showMessageDialog(null, "ID do cliente/consulta inválido");
+            boolean clienteExiste = dao.verificarPacienteExistente(idPaciente);
+            boolean consultaExiste = dao.verificarConsultaExistente(idConsulta);
+            boolean clienteConsulta = dao.verificarPacienteConsulta(idConsulta, idPaciente);
+
+            if (!clienteExiste || !consultaExiste || !clienteConsulta) {
+                JOptionPane.showMessageDialog(null, "ID do cliente/consulta inválido");
+                new CadastroProntuario().setVisible(true);
+                this.dispose();
+                return;
+
+                /*
             new CadastroProntuario().setVisible(true);
             this.dispose();
             return;
-            
-            /*
-            new CadastroProntuario().setVisible(true);
-            this.dispose();
-            return;
-            */
+                 */
+            }
+
+            prontuarios.setId_Paciente(idPaciente);
+            prontuarios.setId_Consulta(idConsulta);
+
+            dao.adiciona(prontuarios);
+
+            JOptionPane.showMessageDialog(null, "Prontuario cadastrado com sucesso");
         }
+        Id_Paciente.setText("");
+        Retorno.setText("");
+        Remedios.setText("");
+        Diagnostico.setText("");
+        Id_Consulta.setText("");
 
-        prontuarios.setId_Paciente(idPaciente);
-        prontuarios.setId_Consulta(idConsulta);
-
-        dao.adiciona(prontuarios);
-
-        JOptionPane.showMessageDialog(null, "Prontuario cadastrado com sucesso");
-    }
-    Id_Paciente.setText("");
-    Retorno.setText("");
-    Remedios.setText("");
-    Diagnostico.setText("");
-    Id_Consulta.setText("");
-
-  
 
     }//GEN-LAST:event_FinalizarActionPerformed
 
-   
-    
-    private void emptyAll(){
-        
+    private void emptyAll() {
+
     }
-    
-    
-    
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -181,8 +175,6 @@ public class CadastroProntuario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
  /*
    
-*/
-
-
+     */
 
 }
