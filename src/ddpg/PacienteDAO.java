@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package ddpg;
 
 import com.mysql.jdbc.Connection;
@@ -115,11 +113,11 @@ public class PacienteDAO {
             stmt.setString(4, objPaciente.getTelefone()); // Define o novo email do usuário no comando SQL
             stmt.setString(5, objPaciente.getCidade());
 
-stmt.setString(6, objPaciente.getData_Nascimento());
-stmt.setString(7, objPaciente.getHistorico_Medico());
-stmt.setString(8, objPaciente.getHistorico_Cirurgico());//
-stmt.setString(9, objPaciente.getAlergias());
-   stmt.setInt(10, objPaciente.getId_Paciente()); // Define o ID do usuário no comando SQL
+            stmt.setString(6, objPaciente.getData_Nascimento());
+            stmt.setString(7, objPaciente.getHistorico_Medico());
+            stmt.setString(8, objPaciente.getHistorico_Cirurgico());//
+            stmt.setString(9, objPaciente.getAlergias());
+            stmt.setInt(10, objPaciente.getId_Paciente()); // Define o ID do usuário no comando SQL
             stmt.execute(); // Executa o comando SQL
             stmt.close(); // Fecha o PreparedStatement
 
